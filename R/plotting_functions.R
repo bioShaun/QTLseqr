@@ -98,7 +98,7 @@ plotQTLStats <-
             }
         
         p <- ggplot2::ggplot(data = SNPset) +
-            ggplot2::scale_x_continuous(breaks = seq(from = 0,to = max(SNPset$POS), by = 10^(floor(log10(max(SNPset$POS))))), labels = format_genomic(), name = "Genomic Position (Mb)") +
+            ggplot2::scale_x_continuous(breaks = seq(from = 0,to = max(SNPset$POS), by = 10^(floor(log10(max(SNPset$POS))))), labels = format_genomic(), name = "Genomic Position") +
             ggplot2::theme(plot.margin = ggplot2::margin(
                 b = 10,
                 l = 20,
@@ -169,7 +169,9 @@ plotQTLStats <-
         }
         
         if (! xtext) {
-            p <- p + theme(axis.text.x = element_blank()) + xlab("")
+            p <- p + theme(axis.text.x = element_blank(),
+                           axis.ticks.x = element_blank()) + 
+                xlab("")
         }
         p
         

@@ -47,6 +47,8 @@ plotQTLStats <-
         plotThreshold = FALSE,
         plotIntervals = FALSE,
         q = 0.05,
+        deltaSNPLimit=1,
+        xtext=TRUE,
         ...) {
         
         #get fdr threshold by ordering snps by pval then getting the last pval
@@ -123,7 +125,7 @@ plotQTLStats <-
             var <- "tricubeDeltaSNP"
             p <-
                 p + ggplot2::ylab(expression(Delta * '(SNP-index)')) +
-                ggplot2::ylim(-0.55, 0.55) +
+                ggplot2::ylim(-deltaSNPLimit, deltaSNPLimit) +
                 ggplot2::geom_hline(yintercept = 0,
                     color = "black",
                     alpha = 0.4)
@@ -166,6 +168,9 @@ plotQTLStats <-
            p <- p + ggplot2::facet_grid(~ CHROM, scales = "free_x")    
         }
         
+        if (! xtext) {
+            p <- p + theme(axis.text.x = element_blank()) + xlab("")
+        }
         p
         
     }

@@ -49,6 +49,7 @@ plotQTLStats <-
         q = 0.05,
         deltaSNPLimit=1,
         xtext=TRUE,
+        plot_title="",
         ...) {
         
         #get fdr threshold by ordering snps by pval then getting the last pval
@@ -171,7 +172,7 @@ plotQTLStats <-
         if (! xtext) {
             p <- p + theme(axis.text.x = element_blank(),
                            axis.ticks.x = element_blank()) + 
-                xlab("")
+                xlab("") + ggtitle(plot_title)
         }
         p
         

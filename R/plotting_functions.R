@@ -164,9 +164,9 @@ plotQTLStats <-
             )
         
         if (scaleChroms == TRUE) {
-           p <- p + ggplot2::facet_grid(~ CHROM, scales = "free_x", space = "free_x")
+           p <- p + ggplot2::facet_wrap(~ CHROM, ncol = 7)
         } else {
-           p <- p + ggplot2::facet_grid(~ CHROM, scales = "free_x")    
+           p <- p + ggplot2::facet_wrap(~ CHROM, ncol = 7)    
         }
         
         if (! xtext) {
